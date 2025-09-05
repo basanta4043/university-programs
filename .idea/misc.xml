@@ -4,5 +4,5 @@
     <option name="sdkName" value="Python 3.13 (DjangoProject)" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.13 (DjangoProject)" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.13 (university-programs)" project-jdk-type="Python SDK" />
 </project>

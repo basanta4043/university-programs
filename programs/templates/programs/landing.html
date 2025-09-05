@@ -1,0 +1,377 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Welcome to UniPrograms - Find Your Perfect University Program{% endblock %}
+
+{% block meta_description %}Discover world-class university programs, find your perfect educational path, and transform your future with UniPrograms.{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">Find Your Perfect University Program</h1>
+            <p class="hero-subtitle">Discover world-class education opportunities and transform your future with thousands of programs from top universities worldwide.</p>
+            <div class="hero-cta">
+                <a href="{% url 'program_list' %}" class="btn-primary-custom">
+                    <i class="fas fa-search me-2"></i>Explore Programs
+                </a>
+                <a href="#about" class="btn-secondary-custom">
+                    <i class="fas fa-play me-2"></i>Learn More
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="section-padding">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="text-gradient mb-3">Why Choose UniPrograms?</h2>
+            <p class="lead text-muted">Your gateway to world-class education with comprehensive support</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3 class="feature-title">Top Universities</h3>
+                    <p class="feature-description">Access programs from prestigious universities worldwide, carefully curated for quality and excellence.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="feature-title">Global Opportunities</h3>
+                    <p class="feature-description">Explore study abroad opportunities in countries across the globe with diverse cultures and experiences.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3 class="feature-title">Expert Guidance</h3>
+                    <p class="feature-description">Get personalized support from our education experts throughout your application journey.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3 class="feature-title">Scholarship Info</h3>
+                    <p class="feature-description">Find scholarships and financial aid opportunities to make your education dreams affordable.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="feature-title">Fast Processing</h3>
+                    <p class="feature-description">Streamlined application process with quick responses and efficient communication.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="feature-title">Quality Assured</h3>
+                    <p class="feature-description">All programs are verified and meet international standards for quality education.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Programs Section -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="mb-3">Featured Programs</h2>
+            <p class="lead text-muted">Discover some of our most popular university programs</p>
+        </div>
+        
+        <div class="row g-4">
+            {% for program in featured_programs %}
+            <div class="col-lg-4 col-md-6">
+                <div class="program-card">
+                    <div class="program-card-header">
+                        <h4 class="program-card-title">{{ program.program_name }}</h4>
+                        <p class="program-card-university">{{ program.university_name }}</p>
+                    </div>
+                    <div class="program-card-body">
+                        <div class="program-info-item">
+                            <span class="program-info-label">Location:</span>
+                            <span class="program-info-value">{{ program.location }}</span>
+                        </div>
+                        <div class="program-info-item">
+                            <span class="program-info-label">Degree:</span>
+                            <span class="program-info-value">{{ program.degree }}</span>
+                        </div>
+                        <div class="program-info-item">
+                            <span class="program-info-label">Duration:</span>
+                            <span class="program-info-value">{{ program.duration }}</span>
+                        </div>
+                        <div class="program-info-item mb-3">
+                            <span class="program-info-label">Language:</span>
+                            <span class="program-info-value">{{ program.instruction_language }}</span>
+                        </div>
+                        <div class="text-center">
+                            <a href="{% url 'program_detail' program.pk %}" class="btn-primary-custom">
+                                <i class="fas fa-info-circle me-2"></i>View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="text-center mt-5">
+            <a href="{% url 'program_list' %}" class="btn-primary-custom">
+                <i class="fas fa-list me-2"></i>View All Programs
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery Section -->
+<section class="gallery-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="mb-3">Campus Life & Experiences</h2>
+            <p class="lead text-muted">Get a glimpse of university life around the world</p>
+        </div>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="University Campus">
+                <div class="gallery-overlay">
+                    <h4>Modern Campus Facilities</h4>
+                    <p>State-of-the-art facilities and learning environments</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Students Studying">
+                <div class="gallery-overlay">
+                    <h4>Collaborative Learning</h4>
+                    <p>Interactive study environments and peer collaboration</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Graduation Ceremony">
+                <div class="gallery-overlay">
+                    <h4>Achievement & Success</h4>
+                    <p>Celebrating milestones and academic achievements</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="International Students">
+                <div class="gallery-overlay">
+                    <h4>Global Community</h4>
+                    <p>Diverse international student communities</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Research Lab">
+                <div class="gallery-overlay">
+                    <h4>Research Excellence</h4>
+                    <p>Cutting-edge research and innovation opportunities</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Campus Life">
+                <div class="gallery-overlay">
+                    <h4>Vibrant Campus Life</h4>
+                    <p>Rich social life and extracurricular activities</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="section-padding bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="slide-in-left">
+                    <h2 class="mb-4">About UniPrograms</h2>
+                    <p class="lead mb-4">We are dedicated to connecting students with world-class educational opportunities and helping them achieve their academic dreams.</p>
+                    
+                    <div class="mb-4">
+                        <h5><i class="fas fa-check-circle text-success me-2"></i>Comprehensive Database</h5>
+                        <p>Access to thousands of verified university programs worldwide.</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5><i class="fas fa-check-circle text-success me-2"></i>Expert Support</h5>
+                        <p>Professional guidance throughout your application journey.</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5><i class="fas fa-check-circle text-success me-2"></i>Success Stories</h5>
+                        <p>Thousands of students have found their perfect programs through us.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="slide-in-right">
+                    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Students in University" class="img-fluid rounded-3 shadow">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Donation Section -->
+<section id="donate" class="donation-section">
+    <div class="container text-center">
+        <div class="fade-in">
+            <h2 class="donation-title">Support Education for All</h2>
+            <p class="donation-subtitle">Help us make quality education accessible to students worldwide. Your donation can change lives and create opportunities.</p>
+            
+            <div class="row justify-content-center mt-5">
+                <div class="col-lg-8">
+                    <div class="row g-3">
+                        <div class="col-md-3 col-6">
+                            <div class="donation-option">
+                                <button class="donation-btn w-100" data-amount="25">$25</button>
+                                <small class="d-block mt-2 opacity-75">Provides study materials</small>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="donation-option">
+                                <button class="donation-btn w-100" data-amount="50">$50</button>
+                                <small class="d-block mt-2 opacity-75">Supports application fees</small>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="donation-option">
+                                <button class="donation-btn w-100" data-amount="100">$100</button>
+                                <small class="d-block mt-2 opacity-75">Funds scholarship program</small>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="donation-option">
+                                <button class="donation-btn w-100" data-amount="custom">Custom</button>
+                                <small class="d-block mt-2 opacity-75">Choose your amount</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <p class="mb-3">
+                            <i class="fas fa-heart me-2"></i>
+                            Together, we can break down barriers to education and create a more equitable world.
+                        </p>
+                        <a href="#" class="btn-secondary-custom" id="main-donate-btn">
+                            <i class="fas fa-donate me-2"></i>Donate Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="section-padding">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="mb-3">Get in Touch</h2>
+            <p class="lead text-muted">Have questions? We're here to help you on your educational journey.</p>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="row g-4">
+                    <div class="col-md-4 text-center">
+                        <div class="contact-item">
+                            <div class="contact-icon mb-3">
+                                <i class="fas fa-envelope fa-2x text-primary"></i>
+                            </div>
+                            <h5>Email Us</h5>
+                            <p class="text-muted">info@uniprograms.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4 text-center">
+                        <div class="contact-item">
+                            <div class="contact-icon mb-3">
+                                <i class="fas fa-phone fa-2x text-primary"></i>
+                            </div>
+                            <h5>Call Us</h5>
+                            <p class="text-muted">+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4 text-center">
+                        <div class="contact-item">
+                            <div class="contact-icon mb-3">
+                                <i class="fas fa-map-marker-alt fa-2x text-primary"></i>
+                            </div>
+                            <h5>Visit Us</h5>
+                            <p class="text-muted">123 Education Ave, City</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Donation button functionality
+    const donationBtns = document.querySelectorAll('.donation-btn[data-amount]');
+    const mainDonateBtn = document.getElementById('main-donate-btn');
+    
+    donationBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const amount = this.dataset.amount;
+            if (amount === 'custom') {
+                const customAmount = prompt('Enter your donation amount:');
+                if (customAmount && !isNaN(customAmount) && customAmount > 0) {
+                    handleDonation(customAmount);
+                }
+            } else {
+                handleDonation(amount);
+            }
+        });
+    });
+    
+    mainDonateBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        handleDonation('custom');
+    });
+    
+    function handleDonation(amount) {
+        // In a real application, this would integrate with a payment processor
+        alert(`Thank you for your generous donation of $${amount}! This feature would redirect to a secure payment processor.`);
+    }
+});
+</script>
+{% endblock %}
